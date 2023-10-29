@@ -495,7 +495,9 @@ func (i *Inspector) RunContainer() error {
 		containerCmd = append(containerCmd, "-log-format", i.LogFormat)
 	}
 
-	i.ContainerName = fmt.Sprintf(ContainerNamePat, os.Getpid(), time.Now().UTC().Format("20060102150405"))
+	if i.ContainerName == "" {
+		i.ContainerName = fmt.Sprintf(ContainerNamePat, os.Getpid(), time.Now().UTC().Format("20060102150405"))
+	}
 
 	labels := i.Overrides.Labels
 	if labels == nil {

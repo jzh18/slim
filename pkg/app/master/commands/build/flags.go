@@ -108,6 +108,8 @@ const (
 
 	//Experimenal flags
 	FlagObfuscateMetadata = "obfuscate-metadata"
+
+	FlagContainerName = "container-name"
 )
 
 // Build command flag usage info
@@ -565,6 +567,12 @@ var Flags = map[string]cli.Flag{
 		Name:    FlagObfuscateMetadata,
 		Usage:   FlagObfuscateMetadataUsage,
 		EnvVars: []string{"DSLIM_OBFUSCATE_METADATA"},
+	},
+
+	FlagContainerName: &cli.StringFlag{
+		Name:  FlagContainerName,
+		Value: "",
+		Usage: "Specify container name",
 	},
 }
 
