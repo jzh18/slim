@@ -740,6 +740,8 @@ var CLI = &cli.Command{
 			xc.Exit(-1)
 		}
 
+		fmt.Println("Hello slim!")
+
 		OnCommand(
 			xc,
 			gparams,
