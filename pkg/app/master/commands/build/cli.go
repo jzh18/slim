@@ -156,6 +156,7 @@ var CLI = &cli.Command{
 		cflag(FlagPathPerms),
 		cflag(FlagPathPermsFile),
 		cflag(FlagObfuscateMetadata),
+		cflag(FlagContainerName),
 		commands.Cflag(commands.FlagContinueAfter),
 		commands.Cflag(commands.FlagUseLocalMounts),
 		commands.Cflag(commands.FlagUseSensorVolume),
@@ -740,6 +741,8 @@ var CLI = &cli.Command{
 			xc.Exit(-1)
 		}
 
+		flagContainerName := ctx.String(FlagContainerName)
+
 		OnCommand(
 			xc,
 			gparams,
@@ -821,7 +824,8 @@ var CLI = &cli.Command{
 			kubeOpts,
 			GetAppNodejsInspectOptions(ctx),
 			imageBuildEngine,
-			imageBuildArch)
+			imageBuildArch,
+			flagContainerName)
 
 		return nil
 	},
