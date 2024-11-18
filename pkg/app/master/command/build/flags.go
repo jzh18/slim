@@ -111,6 +111,8 @@ const (
 	FlagExcludePattern      = "exclude-pattern"
 	FlagExcludePatternUsage = "Exclude path pattern (Glob/Match in Go and **) from image"
 
+	FlagContainerName = "container-name"
+
 	FlagExcludeVarLockFiles      = "exclude-varlock-files"
 	FlagExcludeVarLockFilesUsage = "Exclude the files in the var and run lock directory"
 	//NOTES:
@@ -568,6 +570,11 @@ var Flags = map[string]cli.Flag{
 		Value:   cli.NewStringSlice(),
 		Usage:   FlagCBOLabelUsage,
 		EnvVars: []string{"DSLIM_CBO_LABEL"},
+	},
+	FlagContainerName: &cli.StringFlag{
+		Name:  FlagContainerName,
+		Value: "",
+		Usage: "Specify container name",
 	},
 	FlagCBOTarget: &cli.StringFlag{
 		Name:    FlagCBOTarget,

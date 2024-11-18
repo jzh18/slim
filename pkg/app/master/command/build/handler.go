@@ -153,6 +153,7 @@ func OnCommand(
 	appNodejsInspectOpts config.AppNodejsInspectOptions,
 	imageBuildEngine string,
 	imageBuildArch string,
+	flagContainerName string,
 ) {
 	printState := true
 	logger := log.WithFields(log.Fields{"app": appName, "cmd": Name})
@@ -1112,7 +1113,7 @@ func OnCommand(
 		printState,
 		appNodejsInspectOpts)
 	xc.FailOn(err)
-
+	containerInspector.ContainerName = flagContainerName
 	if len(containerInspector.FatContainerCmd) == 0 {
 		xc.Out.Info("target.image.error",
 			ovars{

@@ -156,6 +156,7 @@ var CLI = &cli.Command{
 		cflag(FlagIncludeAppNextNodeModulesDir),
 		cflag(FlagIncludeNodePackage),
 		cflag(FlagKeepPerms),
+		cflag(FlagContainerName),
 		cflag(FlagPathPerms),
 		cflag(FlagPathPermsFile),
 		//"EXCLUDE" FLAGS - START
@@ -757,6 +758,8 @@ var CLI = &cli.Command{
 			xc.Exit(-1)
 		}
 
+		flagContainerName := ctx.String(FlagContainerName)
+
 		OnCommand(
 			xc,
 			gparams,
@@ -843,7 +846,8 @@ var CLI = &cli.Command{
 			kubeOpts,
 			GetAppNodejsInspectOptions(ctx),
 			imageBuildEngine,
-			imageBuildArch)
+			imageBuildArch,
+			flagContainerName)
 
 		return nil
 	},
